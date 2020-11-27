@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My App WebService</string>
+    <string name="titulo">Login de Acceso</string>
+    <string name="usuario">Usuario:</string>
+    <string name="password">Contraseña:</string>
+    <string name="campos" />
+    <string name="ingresar">Ingresar</string>
+    <string name="respuesta">Respuesta:</string>
+    <string name="token">Token:</string>
+</resources>
