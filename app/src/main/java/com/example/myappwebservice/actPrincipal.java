@@ -36,7 +36,7 @@ public class actPrincipal extends AppCompatActivity implements Asynchtask {
 
         Map<String, String> datos = new HashMap<>();
 
-        WebService webService = new WebService("https://api-uat.kushkipagos.com/transfer/v1/bankList",
+        WebService webService = new WebService("https://api-uat.kushkipagos.com/transfer-subscriptions/v1/bankList",
                 datos, actPrincipal.this, actPrincipal.this);
 
         webService.execute("GET", "Public-Merchant-Id", bundle.getString("token"));
@@ -48,6 +48,7 @@ public class actPrincipal extends AppCompatActivity implements Asynchtask {
         ArrayList<String> lsBancos = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(result);
+            lsBancos.add("Seleccione un Banco");
             for (int i = 0; i < jsonArray.length(); i++)
             {
                 JSONObject banco = jsonArray.getJSONObject(i);
@@ -63,7 +64,7 @@ public class actPrincipal extends AppCompatActivity implements Asynchtask {
             sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(parent.getContext(),"Seleccion: ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(parent.getContext(),"A seleccionado el: " + parent.getItemAtPosition(position),Toast.LENGTH_LONG).show();
                 }
 
                 @Override
