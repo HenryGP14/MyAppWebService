@@ -6,7 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myappwebservice.WebService.Asynchtask;
 import com.example.myappwebservice.WebService.WebService;
@@ -48,7 +54,23 @@ public class actPrincipal extends AppCompatActivity implements Asynchtask {
                 lsBancos.add(banco.getString("name"));
             }
             respueta.setText("El token que ingreso es valido");
-            RecyclerView rc = findViewById(R.id.rcView);
+            Spinner sp = findViewById(R.id.spDatos);
+            ArrayAdapter<CharSequence> adapter;
+            adapter = new ArrayAdapter(this,
+                    android.R.layout.simple_spinner_item, lsBancos);
+            sp.setAdapter(adapter);
+
+            sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(parent.getContext(),"Seleccion: ",Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }catch (Exception e)
         {
             respueta.setText("El token que ingreso no es valido" );
